@@ -14,6 +14,7 @@ module.exports = {
             { test: /\.css$/, use: ['style-loader', 'css-loader' ]}
         ]
     },
+
     devServer: {
         historyApiFallback: true,
     },
@@ -21,3 +22,4 @@ module.exports = {
         template: './app/index.html'
     })]
 }
+

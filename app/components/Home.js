@@ -4,12 +4,12 @@ var Link = require('react-router-dom').Link;
 class Home extends React.Component {
     render(){
         return(
-            <div className='home-container'>
-                <h1>Github Battle</h1>
-                <Link className='button' to='/battle'>Battle</Link>
+            <div>
+                <h2>test view</h2>
             </div>
         )
     }
 }
 
 module.exports = Home;
+

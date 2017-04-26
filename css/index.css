@@ -1,0 +1,194 @@
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.eventList{
+    display: flex;
+  flex-direction: row;
+}
+
+.home-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+
+}
+
+.eventForm{
+    width: 700px;
+    border: 1px solid #DBDBDB;
+    padding: 10px;
+}
+
+.btn {
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+}
+.btn-add {
+    border: 2px dotted grey;
+    cursor: pointer;
+    background: whitesmoke;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.btn-view {
+    cursor: pointer;
+    background: lightblue;
+    width: 100px;
+    margin: 0 auto;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: 0;
+    outline: none;
+}
+
+.btn-submit {
+    border: 1px solid transparent;
+    background: transparent;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: thin;
+    padding: 5px;
+    margin-left: 10px;
+    color: white;
+    cursor: pointer;
+    }
+
+.formInputField {
+    margin: 10px;
+    margin-bottom: 25px;
+}
+
+.formInputField input{
+
+    border:none;
+    border-bottom:1px solid #757575;
+}
+
+.formInputField input:focus{
+    outline:none;
+}
+
+
+
+
+.formInputField label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    pointer-events: none;
+    transition: 0.2s ease all;
+}
+
+
+
+.bar{ 
+    position:relative; 
+    display:block; 
+   }
+
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+.radioInput{
+    padding: 2px;
+    font-weight: thin;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.textInput, .numberInput{
+    width: 75%;
+    height: 24px;
+    border: 2px solid transparent;
+    border-bottom: 2px solid red;
+    padding: 2px;
+    font-weight: thin;
+    font-size: 14px;
+    display: block;
+    background: transparent;
+    margin-left: 5px;
+}
+
+.textInput::-webkit-input-placeholder{
+    color: lightgray;
+}
+
+.half-width{
+    width: 48%;
+}
+
+.textInput:focus{
+    font-weight: bold;
+}
+
+label {
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.head{
+    background: lightblue;
+    color: white;
+    margin: -10px;
+    padding-bottom: 10px;
+}
+
+.optionInput {
+ margin: 8px;
+  cursor: pointer;
+  padding-left: 18px;
+  padding-right: 0;
+  line-height: 26px;
+  min-width: 18px;
+  min-height: 18px;
+}
+
+.headerImage{
+    width: 720px;
+    
+}
+
+.viewImage{
+    width:180px;
+    height: 40px;
+}
+
+.eventTile{
+    width: 180px;
+    height: 180px;
+    border: 1px dotted grey;
+    border-radius: 4px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.headerOverflow{
+    overflow: hidden;
+    max-height: 200px;
+}
+

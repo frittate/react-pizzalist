@@ -1,35 +1,35 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Popular = require('./Popular');
 var ReactRouter = require('react-router-dom');
 var Router = ReactRouter.BrowserRouter;
 var Route = ReactRouter.Route;
 var Switch = ReactRouter.Switch;
-var Nav = require('./Nav');
 var Home = require('./Home');
-var Battle = require('./Battle');
-var Results = require('./Results');
+var ShowEventList = require('./ShowEventList');
+var EventView = require('./EventView');
+import 'react-datepicker/dist/react-datepicker.css';
 
-class App extends React.Component {
-  render() {
+function App(props){
     return (
       <Router>
         <div className='container'>
-          <Nav />
+            <div className='home-container'>
+                <h1>Pizza Master Chef Order System </h1>            
+            </div>
+
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/popular' component={Popular} /> 
-            <Route exact path='/battle' component={Battle} />
-            <Route path='/battle/results' component={Results} />
+            <Route exact path='/' component={EventView} />
+            <Route exact path='/list' component={ShowEventList} />
+            <Route path ='/new' component={Home} />
             <Route render={function(){
-              return <p>Not Found</p>
+              return <p>404 Not Found</p>
             }} />
             </Switch>
         </div>
     </Router>
+    
     )
   }
-}
 
 App.PropTypes = {
 }
