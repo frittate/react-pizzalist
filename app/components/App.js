@@ -9,22 +9,27 @@ var ShowEventList = require('./ShowEventList');
 var EventView = require('./EventView');
 import 'react-datepicker/dist/react-datepicker.css';
 
+
+
+
 function App(props){
     return (
       <Router>
         <div className='container'>
-            <div className='home-container'>
+            <div className='top-container'>
                 <h1>Pizza Master Chef Order System </h1>            
             </div>
 
-          <Switch>
-            <Route exact path='/' component={EventView} />
-            <Route exact path='/list' component={ShowEventList} />
-            <Route path ='/new' component={Home} />
-            <Route render={function(){
-              return <p>404 Not Found</p>
-            }} />
-            </Switch>
+            <div>
+                <Switch>
+                  <Route exact path='/' component={ShowEventList} />
+                  <Route path ='/new' component={Home} />
+                  <Route render={function(){
+                    return <p>404 Not Found</p>
+                  }} />
+                  </Switch>
+            </div>
+
         </div>
     </Router>
     

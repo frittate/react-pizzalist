@@ -36,7 +36,7 @@ class ShowEventList extends React.Component {
                  )
              }, this)}
              <div>
-                <button className='btn btn-add' onClick={this.onAdd}>Add new Event</button>
+                <button className='btn-add' onClick={this.onAdd}>Add new Event</button>
              </div>
         </div>
     )

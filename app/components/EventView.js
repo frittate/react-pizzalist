@@ -7,7 +7,7 @@ class EventView extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            visible: 'overview',
+            visible: true,
             name: '',
             type: 'bestellen',
             cost: 2,
@@ -25,20 +25,13 @@ class EventView extends React.Component{
         this.handleTimeChange = this.handleTimeChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
         this.handleOptionChange = this.handleOptionChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onDetail = this.onDetail.bind(this);
+        this.toggleView = this.toggleView.bind(this);
     }
 
-    onSubmit(event){
+    toggleView(){
         event.preventDefault();
          this.setState({
-            visible: 'overview',
-        })
-    }
-
-    onDetail(){
-        this.setState({
-            visible: 'detail',
+            visible: !this.state.visible,
         })
     }
 
@@ -73,88 +66,95 @@ class EventView extends React.Component{
     }
 
     render(){
+           
         var imgStyle = {
             backgroundImage: 'url(' + this.state.img + ')',
             backgroundSize: 'cover',
         }
-
-        if (this.state.visible === 'detail'){
+        
         return(
-            <div className='home-container'>
-                <div className='headerOverflow'>
-                {this.state.img ? 
-                <img src={this.state.img} alt='testimage' className='headerImage' /> : null}
-                </div>
-                <form className='eventForm' onSubmit={this.onSubmit}>
-                    <div className='head'>
-                        <input type='submit' defaultValue={this.state.name === '' ? 'Erstellen' : 'Speichern'} className='btn-submit'/>
-                        <Name 
-                        handleChange={this.handleChange}
-                        value={this.state.name}
-                        />
+            <div>
+                 <div>
+                    <EventHead 
+                    name={this.state.name} 
+                    date={this.state.startDate} 
+                    onKill={this.props.onKill} 
+                    toggleView={this.toggleView}
+                    visible={this.state.visible}/>
                     </div>
-                    
-                    <button onClick={this.props.onKill}>Delete Me!</button>
+                {this.state.visible ?
+                    <div className='eventForm'>
+                        <div>
+                            <Name 
+                            value={this.state.name}
+                            handleChange={this.handleChange}
+                            />
+                        </div>
 
-                    <Time 
-                    selected={this.state.startDate}
-                    onChange={this.handleTimeChange}
-                    />
-                    
-                    <Type 
-                    type={this.state.type}
-                    handleTypeChange={this.handleTypeChange}/>
+                        <Time 
+                        selected={this.state.startDate}
+                        onChange={this.handleTimeChange}
+                        />
+                        
+                        <Type 
+                        type={this.state.type}
+                        handleTypeChange={this.handleTypeChange}/>
 
-                    <Cost 
-                    cost={this.state.cost}
-                    handleChange={this.handleChange} />
+                        <Cost 
+                        cost={this.state.cost}
+                        handleChange={this.handleChange} />
 
-                    <Options 
-                    vegetarisch = {this.vegetarisch}
-                    vegan={this.vegan}
-                    nuts={this.nuts}
-                    scharf={this.scharf}
-                    handleOptionChange = {this.handleOptionChange}/>
+                        <Options 
+                        vegetarisch = {this.vegetarisch}
+                        vegan={this.vegan}
+                        nuts={this.nuts}
+                        scharf={this.scharf}
+                        handleOptionChange = {this.handleOptionChange}/>
 
-                    <Comments 
-                    handleChange={this.handleChange}
-                    comments={this.state.comments}/>
+                        <Comments 
+                        handleChange={this.handleChange}
+                        comments={this.state.comments}/>
 
-                    <Image 
-                    handleChange={this.handleChange}/>
-                    {/* <Participants 
-                    handleChange={this.handleChange}
-                    participants={this.state.participants}/> */}
-                </form>
-            </div>
-           
-        ) } else {
-            return(
-                <div className='eventTile' style={imgStyle}>
-                    
-
-                    <p>{this.state.name}</p>
-                    <p>{this.state.startDate.format('DD. MMM')}</p>
-                    <button onClick={this.onDetail} className='btn-view'>{this.state.name === '' ? 'Erstellen' : 'Details anzeigen'}</button>
+                        <Image 
+                        handleChange={this.handleChange}/>
+                        {/* <Participants 
+                        handleChange={this.handleChange}
+                        participants={this.state.participants}/> */}
+                    </div>
+                    : null}
                 </div>
-            )
+                )
         }
 }
+
+function EventHead(props){
+    return(
+        <div>
+            <div className='eventHeadImage'>
+                <img src='../img/cards/card-header-04.jpg' alt='event header image' width='800px' />
+            </div>
+            <div className="eventHeadText">
+                <h2>{props.name}</h2>
+                <div className="eventHeadContent">
+                    <p>von Jens am {props.date.format('DD. MMM')}</p>
+                    <button type='button' onClick={props.toggleView}>{props.visible ? 'Save' : 'Edit'}</button>
+                    <button type='button' onClick={props.onKill}>Delete Event</button>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 function Name(props){
     return(
         <div className='formInputField'>
-            <label>Gib deinem Event einen Namen</label>
             <input type='text'
             name='name'
             className='textInput'
-            value={props.value}
+            value={props.value === '' ? 'Gib deinem Event einen Namen' : props.value}
+            autoFocus
             onChange={props.handleChange} 
-            />
-            <span className='bar'></span>
-            <br />
-            
+            />           
         </div>
     )
 }
@@ -162,11 +162,11 @@ function Name(props){
 function Time(props){
     return(
         <div className='formInputField'>
-            <label>Gib eine Zeit an</label><br />
             <Datepicker 
             inline
             selected={props.selected}
             onChange={props.onChange}
+            minDate={moment()}
             dateFormat='DD/MM/YYYY' 
             todayButton={'Heute'}/>
             
@@ -178,8 +178,7 @@ function Type(props){
     var value = ['bestellen', 'kochen'];
     return(
         <div className='formInputField'>
-            <label>Bestellen oder kochen</label><br />
-
+            <div className="textInput">
             <input type='radio' 
             name='type' 
             className='radioInput' 
@@ -196,22 +195,23 @@ function Type(props){
             onChange={props.handleTypeChange}
              
             /> Selbst kochen <br />
+            </div>
         </div>
     )
 }
 
 function Cost(props){
     return(
-        <div className='formInputField half-width'>
-            <label>Kosten in Euro</label><br />
+        <div className='formInputField'>
             <input 
             type='number'
             name='cost' 
             min='0' max='100'
             step='0.50' 
-            className='numberInput' 
+            className='textInput numberInput' 
             value={props.cost}
             onChange={props.handleChange} />
+        <p id='cost'>Euro pro Person</p>
         </div>
     )
 }

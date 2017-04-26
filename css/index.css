@@ -1,38 +1,157 @@
+body{
+    background: linear-gradient(to top, #c0392b, #8e44ad);
+    font-family: Roboto, sans-serif;
+}
+
 .container{
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
 }
 
-.eventList{
-    display: flex;
-  flex-direction: row;
-}
-
-.home-container{
+.top-container{
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: Roboto, sans-serif;
+}
 
+.eventList{
+    width: 100%;
+    position: relative;
+    min-height: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-add {
+    width: 800px;
+    height: 180px;
+    cursor: pointer;
+    display: inline-block;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+    margin: 20px;
+    position: relative;
+    margin-bottom: 50px;
+    transition: all .4s ease;
+    background-color: #cfcfcf;
+    border: none;
+    outline: none;
+}
+
+.btn-add:hover{
+    background-color: lightgreen;
+}
+
+.btn.add:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin-bottom: 54px;
+}
+
+.eventHead{
+    width: 800px;
+    height: 100px;
+    display: inline-block;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+    margin: 20px;
+    position: relative;
+    margin-bottom: 50px;
+    background-color: #c0ffee;
+}
+
+.eventHeadImage{
+  height: 200px;
+  opacity: .7;
+  overflow: hidden;
+  transition: all .2s ease-in-out;
+  top: -50%;
+}
+
+.eventHeadContent{
+    width: 770px;
+    height: 80px;
+    display: inline-block;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
+    position: relative;
+    transition: all .2s ease-in-out;
+    background-color: white;
+    padding: 15px;
+}
+
+.eventHeadContent button{
+    text-transform: uppercase;
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    min-width: 48px;
+    height: 36px;
+    padding: 8px 20px 8px 20px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+.eventHeadContent button:hover{
+    background-color: lightblue;
+}
+
+
+.eventHeadText h2{
+    text-transform: uppercase;
+    position: absolute;
+    top: 150px;
+    padding-left: 15px;
+    color: white;
 }
 
 .eventForm{
-    width: 700px;
-    border: 1px solid #DBDBDB;
-    padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
-.btn {
-    width: 180px;
-    height: 180px;
-    border-radius: 4px;
+.formInputField {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    display: block;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+
+.formInputField input{
+    border:none;
 }
-.btn-add {
-    border: 2px dotted grey;
-    cursor: pointer;
-    background: whitesmoke;
-    margin-left: 15px;
-    margin-right: 15px;
+
+.formInputField input:focus{
+    outline:none;
+    background-color: lightblue;
+}
+
+.textInput{
+    width:755px;
+    height: 66px;
+    display: block;
+    font-size: 16px;
+    padding-left: 45px;
+}
+
+.formInputField label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    position: relative;
+    top: 30px;
+    display: block;
+}
+
+.react-datepicker{
+    margin-left: 45px;
+    margin-bottom: 20px;
 }
 
 .btn-view {
@@ -58,78 +177,26 @@
     cursor: pointer;
     }
 
-.formInputField {
-    margin: 10px;
-    margin-bottom: 25px;
-}
-
-.formInputField input{
-
-    border:none;
-    border-bottom:1px solid #757575;
-}
-
-.formInputField input:focus{
-    outline:none;
-}
 
 
 
 
-.formInputField label {
-    color: #999;
-    font-size: 18px;
-    font-weight: normal;
-    pointer-events: none;
-    transition: 0.2s ease all;
-}
 
-
-
-.bar{ 
-    position:relative; 
-    display:block; 
-   }
-
-.bar:before, .bar:after   {
-  content:'';
-  height:2px; 
-  width:0;
-  bottom:1px; 
-  position:absolute;
-  background:#5264AE; 
-  transition:0.2s ease all; 
-}
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%; 
-}
-
-/* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
-}
 
 .radioInput{
-    padding: 2px;
+    padding-left: 25px;
     font-weight: thin;
     font-size: 14px;
     margin: 5px;
 }
 
-.textInput, .numberInput{
-    width: 75%;
-    height: 24px;
-    border: 2px solid transparent;
-    border-bottom: 2px solid red;
-    padding: 2px;
-    font-weight: thin;
-    font-size: 14px;
+.numberInput{
+    width: 100px;
+}
+
+#cost{
+    float:left;
     display: block;
-    background: transparent;
-    margin-left: 5px;
 }
 
 .textInput::-webkit-input-placeholder{
@@ -166,17 +233,10 @@ label {
   min-height: 18px;
 }
 
-.headerImage{
-    width: 720px;
-    
-}
 
-.viewImage{
-    width:180px;
-    height: 40px;
-}
 
-.eventTile{
+
+/*.eventTile{
     width: 180px;
     height: 180px;
     border: 1px dotted grey;
@@ -185,7 +245,7 @@ label {
     margin-right: 15px;
     padding: 5px;
     overflow: hidden;
-}
+}*/
 
 .headerOverflow{
     overflow: hidden;
