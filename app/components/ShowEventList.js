@@ -30,9 +30,11 @@ class ShowEventList extends React.Component {
  render(){
      return(
          <div className='eventList'>
-             {this.state.events.map(function(eventId){
+             {this.state.events.map(function(eventId, index){
                  return (
-                 <EventView key={eventId} onKill={this.onKill}/>
+                     <ul>
+                    <li key={index}><EventView id={eventId} onKill={this.onKill}/></li>
+                    </ul>
                  )
              }, this)}
              <div>
