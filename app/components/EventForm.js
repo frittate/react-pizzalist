@@ -7,8 +7,8 @@ function EventForm(props){
      <div className='eventForm'>
                         <div>
                             <Name 
-                            value={props.name}
-                            handleChange={props.handleChange}
+                            eventname={props.name}
+                            handleNameChange={props.handleNameChange}
                             />
                         </div>
 
@@ -51,9 +51,9 @@ function Name(props){
             <input type='text'
             name='name'
             className='textInput'
-            value={props.value === '' ? 'Gib deinem Event einen Namen' : props.value}
+            value={props.name === '' ? 'Gib deinem Event einen Namen' : props.name}
             autoFocus
-            onChange={props.handleChange} 
+            onChange={props.handleNameChange} 
             />           
         </div>
     )

@@ -18,25 +18,28 @@ class ShowEventList extends React.Component {
             })
         }
 
-    onKill(event){
+    onKill(eventId){
+        eventId = eventId - 1;
+        const newEvents = this.state.events;
         debugger;
-        console.log(event.target.key);
-        
-        this.setState({
-            events: this.state.events.splice([event.target.key-1],1)
-        })
+        if (newEvents.indexOf(eventId) > -1){
+            newEvents.splice(newEvents.indexOf(eventId), 1);
+            this.setState({events: newEvents})
+        }
     }    
 
  render(){
      return(
          <div className='eventList'>
+              <ul>
              {this.state.events.map(function(eventId, index){
                  return (
-                     <ul>
-                    <li key={index}><EventView id={eventId} onKill={this.onKill}/></li>
-                    </ul>
+                    
+                    <li key={index}><EventView id={eventId} onKill={this.onKill.bind(this, eventId)}/></li>
+                  
                  )
              }, this)}
+               </ul>
              <div>
                 <button className='btn-add' onClick={this.onAdd}>Add new Event</button>
              </div>

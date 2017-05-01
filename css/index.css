@@ -101,10 +101,10 @@ body{
 
 .eventHeadText h2{
     text-transform: uppercase;
-    position: absolute;
-    top: 150px;
     padding-left: 15px;
     color: white;
+    position: relative;
+    transform: translateY(-50px);
 }
 
 .eventForm{
